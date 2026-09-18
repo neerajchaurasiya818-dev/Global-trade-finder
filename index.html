@@ -1,1 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Trade Finder</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #0b5cff;
+      color: white;
+      padding: 25px 18px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 15px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 12px 0 7px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      background: #0b5cff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0847c7;
+    }
+
+    #results {
+      display: none;
+    }
+
+    .result {
+      border: 1px solid #e1e5ec;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 12px;
+    }
+
+    .result h3 {
+      color: #0b5cff;
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eaf1ff;
+      color: #0b5cff;
+      padding: 5px 8px;
+      border-radius: 5px;
+      margin-top: 7px;
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🌍 Global Trade Finder</h1>
+    <p>Find products, markets and international trade opportunities</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>Product Search</h2>
+
+      <label>What product are you looking for?</label>
+      <input
+        type="text"
+        id="product"
+        placeholder="Example: Rice, Shoes, Solar Panel"
+      >
+
+      <label>Import From</label>
+      <select id="fromCountry">
+        <option>Any Country</option>
+        <option>India</option>
+        <option>China</option>
+        <option>USA</option>
+        <option>UAE</option>
+        <option>Germany</option>
+        <option>Japan</option>
+      </select>
+
+      <label>Export To</label>
+      <select id="toCountry">
+        <option>Any Country</option>
+        <option>India</option>
+        <option>USA</option>
+        <option>UAE</option>
+        <option>UK</option>
+        <option>Germany</option>
+        <option>Canada</option>
+        <option>Australia</option>
+      </select>
+
+      <button onclick="searchProduct()">Search Trade Opportunities</button>
+    </div>
+
+    <div class="card" id="results">
+      <h2>Search Results</h2>
+      <div id="resultList"></div>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Global Trade Finder
+  </footer>
+
+  <script>
+    function searchProduct() {
+
+      const product = document.getElementById("product").value.trim();
+      const from = document.getElementById("fromCountry").value;
+      const to = document.getElementById("toCountry").value;
+
+      if (!product) {
+        alert("Please enter a product name.");
+        return;
+      }
+
+      document.getElementById("results").style.display = "block";
+
+      document.getElementById("resultList").innerHTML = `
+        <div class="result">
+          <h3>${product}</h3>
+          <p><strong>Import From:</strong> ${from}</p>
+          <p><strong>Export To:</strong> ${to}</p>
+          <span class="tag">Trade Opportunity</span>
+        </div>
+
+        <div class="result">
+          <h3>Market Research</h3>
+          <p>Real-time demand, buyers, prices and trade data will be connected through APIs in the next step.</p>
+          <span class="tag">API Integration Coming</span>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
